@@ -1,0 +1,103 @@
+<mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="selectCrustFormGroup">
+        <form [formGroup]="selectCrustFormGroup" class="step-form">
+            <ng-template matStepLabel>Select your crust:</ng-template>
+            <mat-form-field appearance="fill">
+                <mat-label>Select crust</mat-label>
+                <mat-select formControlName="crustSelectCtrl" required>
+                    <mat-option *ngFor="let crust of pizzaCrusts | async" [value]="crust">{{crust.name}}</mat-option>                    
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+        <div *ngIf="selectCrustFormGroup.value.crustSelectCtrl" class="selection-detail">
+            <h2>Your selection:</h2>
+            <p ><b>Crust: </b>{{selectCrustFormGroup.value.crustSelectCtrl.name}} (₹ {{selectCrustFormGroup.value.crustSelectCtrl.price}})</p>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="selectSauceFormGroup">
+        <form [formGroup]="selectSauceFormGroup" class="step-form">
+            <ng-template matStepLabel>Select your sauce:</ng-template>
+            <mat-form-field appearance="fill">
+                <mat-label>Select sauce</mat-label>
+                <mat-select formControlName="sauceSelectCtrl" required>
+                    <mat-option *ngFor="let sauce of pizzaSauces | async" [value]="sauce">{{sauce.name}}</mat-option> 
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+        <div  class="selection-detail">
+            <h2>Your selection:</h2>
+            <p ><b>Crust: </b>{{selectCrustFormGroup.value.crustSelectCtrl.name}} (₹ {{selectCrustFormGroup.value.crustSelectCtrl.price}})</p>
+            <p *ngIf="selectSauceFormGroup.value.sauceSelectCtrl"><b>Sauce: </b> {{selectSauceFormGroup.value.sauceSelectCtrl.name}} (₹ {{selectSauceFormGroup.value.sauceSelectCtrl.price}})</p>
+        </div>
+    </mat-step>
+
+    <mat-step [stepControl]="selectCheeseFormGroup">
+        <form [formGroup]="selectCheeseFormGroup" class="step-form">
+            <ng-template matStepLabel>Select your cheese:</ng-template>
+            <mat-form-field appearance="fill">
+                <mat-label>Select cheese</mat-label>
+                <mat-select formControlName="cheeseSelectCtrl" required>
+                    <mat-option *ngFor="let cheese of pizzaCheeses | async" [value]="cheese">{{cheese.name}}</mat-option> 
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+        <div  class="selection-detail">
+            <h2>Your selection:</h2>
+            <p ><b>Crust: </b>{{selectCrustFormGroup.value.crustSelectCtrl.name}} (₹ {{selectCrustFormGroup.value.crustSelectCtrl.price}})</p>
+            <p ><b>Sauce: </b> {{selectSauceFormGroup.value.sauceSelectCtrl.name}} (₹ {{selectSauceFormGroup.value.sauceSelectCtrl.price}})</p>
+            <p *ngIf="selectCheeseFormGroup.value.cheeseSelectCtrl"><b>Sauce: </b> {{selectCheeseFormGroup.value.cheeseSelectCtrl.name}} (₹ {{selectCheeseFormGroup.value.cheeseSelectCtrl.price}})</p>
+        </div>
+    </mat-step>
+
+    <mat-step [stepControl]="selectToppingFormGroup">
+        <form [formGroup]="selectToppingFormGroup" class="step-form">
+            <ng-template matStepLabel>Select your toppong:</ng-template>
+            <mat-form-field appearance="fill">
+                <mat-label>Select topping</mat-label>
+                <mat-select formControlName="toppingSelectCtrl" required>
+                    <mat-option *ngFor="let topping of pizzaToppings | async" [value]="topping">{{topping.name}}</mat-option> 
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+        <div  class="selection-detail">
+            <h2>Your selection:</h2>
+            <p ><b>Crust: </b>{{selectCrustFormGroup.value.crustSelectCtrl.name}} (₹ {{selectCrustFormGroup.value.crustSelectCtrl.price}})</p>
+            <p ><b>Sauce: </b> {{selectSauceFormGroup.value.sauceSelectCtrl.name}} (₹ {{selectSauceFormGroup.value.sauceSelectCtrl.price}})</p>
+            <p ><b>Sauce: </b> {{selectCheeseFormGroup.value.cheeseSelectCtrl.name}} (₹ {{selectCheeseFormGroup.value.cheeseSelectCtrl.price}})</p>
+            <p *ngIf="selectToppingFormGroup.value.toppingSelectCtrl"><b>Sauce: </b> {{selectToppingFormGroup.value.toppingSelectCtrl.name}} (₹ {{selectToppingFormGroup.value.toppingSelectCtrl.price}})</p>
+        </div>
+    </mat-step>
+    <mat-step>
+        <div class="step-form">
+            <ng-template matStepLabel>Review Selection</ng-template>
+            <h2>Review your order</h2>
+            <div  class="selection-detail">
+                <p ><b>Crust: </b>{{selectCrustFormGroup.value.crustSelectCtrl.name}} (₹ {{selectCrustFormGroup.value.crustSelectCtrl.price}})</p>
+                <p ><b>Sauce: </b> {{selectSauceFormGroup.value.sauceSelectCtrl.name}} (₹ {{selectSauceFormGroup.value.sauceSelectCtrl.price}})</p>
+                <p ><b>Sauce: </b> {{selectCheeseFormGroup.value.cheeseSelectCtrl.name}} (₹ {{selectCheeseFormGroup.value.cheeseSelectCtrl.price}})</p>
+                <p ><b>Sauce: </b> {{selectToppingFormGroup.value.toppingSelectCtrl.name}} (₹ {{selectToppingFormGroup.value.toppingSelectCtrl.price}})</p>
+                <p ><b>Base Charges: </b>₹ {{basePrice}}</p>
+                <p ><b>Total Price: </b><u>₹ {{basePrice + selectCrustFormGroup.value.crustSelectCtrl.price + selectSauceFormGroup.value.sauceSelectCtrl.price + selectCheeseFormGroup.value.cheeseSelectCtrl.price + selectToppingFormGroup.value.toppingSelectCtrl.price}}</u></p>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-raised-button (click)="onOrderSubmit()" color="accent">Submit</button>
+            </div>
+        </div>
+    </mat-step>
+</mat-stepper>

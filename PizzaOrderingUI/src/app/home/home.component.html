@@ -1,0 +1,19 @@
+<div class="pizza-card-container">
+    <mat-card class="pizza-card" *ngFor="let pizza of pizzas | async">
+        <mat-card-header>
+            <mat-card-title>{{pizza.name}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="pizza.imageUrl">
+        <mat-card-content>
+            <b>₹ {{pizza.price}}</b>
+          </mat-card-content>
+        <mat-card-actions>
+            <button color="accent" mat-raised-button (click)="onOrderClick(pizza)">Order
+                <mat-icon color="primary">shopping_cart</mat-icon>
+            </button>
+            <button color="accent" mat-raised-button (click)="onCustomizeClick(pizza)">Customize
+                <mat-icon color="primary">pie_chart</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

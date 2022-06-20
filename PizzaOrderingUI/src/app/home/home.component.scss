@@ -1,0 +1,30 @@
+.pizza-card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pizza-card {
+    width: 300px;
+
+    .mat-card-header {
+        justify-content: center;
+    }
+
+    .mat-card-actions {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+        button {
+            flex-basis: 45%;
+        }
+    }
+}
+
+.success-result {
+    color: rgba(0,0,0,.87);
+    background-color: #ffd740;
+}

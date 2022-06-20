@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Pizza Ordering Confirmation</h1>
+<div mat-dialog-content>
+    <p *ngIf="data.pizzaName;else customPizza">You chosen pizza: <b>{{data.pizzaName}}</b></p>
+    <ng-template #customPizza>
+        <p>Chosen crust: <b>{{data.crustName}}</b></p>
+        <p>Chosen sauce: <b>{{data.sauceName}}</b></p>
+        <p>Chosen cheese: <b>{{data.cheeseName}}</b></p>
+        <p>Chosen topping: <b>{{data.toppingName}}</b></p>
+    </ng-template>
+    <p>Total price: <b>₹ {{data.price}}</b></p>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()" color="warn">Cancel</button>
+    <button mat-button [mat-dialog-close]="data.price" cdkFocusInitial color="primary">Ok</button>
+</div>
